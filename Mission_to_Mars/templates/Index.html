@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mars</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body style="background-color:whitesmoke">
+  <div class="container-fluid" style= "background-color: black">
+    <div class="jumbotron text-center" style= "background-color: rgb(216, 0, 0)">
+      <h1 style="color:white">All About Mars</h1>
+      <p style="color:white">News, Images, Facts, and More!</p>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get Mars Info!</a></p>
+    </div>
+   </div>  
+  <div class = container>
+    <div class=row>
+        <div>
+          
+            <h2 style="color:rgb(216, 0, 0); text-align: center">Latest News</h2>
+            <h3><div style="font-weight:bold">{{ mars.news_title }}:</div>{{ mars.news_p }} </h3> 
+           
+        </div>
+          <div class=col-md-6>
+              <h2 style="color:rgb(216, 0, 0)">Featured Image</h2>
+              <img src="{{ mars.featured_image_url }}" alt="Featured Image" style="width:450px">
+          </div>
+          <div class=col-md-6>
+                <h2 style="color:rgb(216, 0, 0)">Mars Facts</h2>
+                <div style="text-align:center">{{mars.mars_html_table|safe}}</div>
+          </div>
+        <div class=col-md-12>
+            <h2 style="color:rgb(216, 0, 0);text-align: center">Hemispheres</h2>
+            <div>
+              <ul style= "list-style: none" >
+                  {% for img in mars.hemisphere_image_urls %}
+                  <div class=col-md-3 style="background-color: rgb(216, 0, 0); color:white"><li><h4>{{ img.title}}</h4>: <img src="{{ img.img_url }}" style="width:200px" > </li></div>
+                  {% endfor %}
+              </ul>
+            </div>
+        </div>
+     </div>
+    </div>
+ </div>
+</body>
+
+</html>
